@@ -12,8 +12,8 @@ from sklearn.svm import SVC
 
 app = Flask(__name__)
 
-vector = load(open("vector_tfidf.sav", "rb"))
-model = load(open("svm_sentiment_analysis.sav", "rb"))
+vector = load(open("src/vector_tfidf.sav", "rb"))
+model = load(open("src/svm_sentiment_analysis.sav", "rb"))
 
 def predict_sentiment(str):
     sentence = [str.strip().lower().replace('\t', ' ').replace('\n', ' ').replace('.', '')]
