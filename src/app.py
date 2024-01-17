@@ -37,5 +37,3 @@ def rootpage():
             result = predict_sentiment(review)
 
     return render_template('index.html', result=result)
-
-app.run()
