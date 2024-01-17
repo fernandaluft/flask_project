@@ -1,6 +1,7 @@
 import os
 os.environ['FLASK_ENV'] = 'production'
 
+import flask
 from flask import Flask, render_template, request, redirect, url_for
 from pickle import load
 import pandas as pd
@@ -11,8 +12,8 @@ from sklearn.svm import SVC
 
 app = Flask(__name__)
 
-vector = load(open("../models/vector_tfidf.sav", "rb"))
-model = load(open("../models/svm_sentiment_analysis.sav", "rb"))
+vector = load(open("vector_tfidf.sav", "rb"))
+model = load(open("svm_sentiment_analysis.sav", "rb"))
 
 def predict_sentiment(str):
     sentence = [str.strip().lower().replace('\t', ' ').replace('\n', ' ').replace('.', '')]
@@ -35,7 +36,7 @@ def rootpage():
         else:
             result = predict_sentiment(review)
 
-    return render_template('index.html', result=result)
+    return render_template('/src/index.html', result=result)
 
 if __name__ == '__main__':
     app.run()
