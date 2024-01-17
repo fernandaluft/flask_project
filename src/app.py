@@ -1,5 +1,5 @@
 import os
-#os.environ['FLASK_ENV'] = 'production'
+os.environ['FLASK_ENV'] = 'production'
 
 import flask
 from flask import Flask, render_template, request, redirect, url_for
@@ -35,6 +35,3 @@ def rootpage():
             result = predict_sentiment(review)
 
     return render_template('index.html', result=result)
-
-if __name__ == '__main__':
-    app.run()
