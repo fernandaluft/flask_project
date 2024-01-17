@@ -36,7 +36,7 @@ def rootpage():
         else:
             result = predict_sentiment(review)
 
-    return render_template('/src/index.html', result=result)
+    return render_template('index.html', result=result)
 
 if __name__ == '__main__':
     app.run()
