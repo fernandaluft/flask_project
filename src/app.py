@@ -1,13 +1,11 @@
 import os
-os.environ['FLASK_ENV'] = 'production'
+#os.environ['FLASK_ENV'] = 'production'
 
 import flask
 from flask import Flask, render_template, request, redirect, url_for
 from pickle import load
 import pandas as pd
-import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC
 
 app = Flask(__name__)
@@ -37,3 +35,6 @@ def rootpage():
             result = predict_sentiment(review)
 
     return render_template('index.html', result=result)
+
+if __name__ == '__main__':
+    app.run()
